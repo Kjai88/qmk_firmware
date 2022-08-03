@@ -69,9 +69,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     void encoder_action_navpage(bool clockwise) {
         if (clockwise)
-            tap_code16(KC_PGUP);
-        else
             tap_code16(KC_PGDN);
+        else
+            tap_code16(KC_PGUP);
     }
 
     // LAYER HANDLING
@@ -210,8 +210,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             register_mods(MOD_BIT(KC_RSFT));
         } else if (mods_state & MOD_BIT(KC_LCTL)) {  // if holding Left Ctrl, navigate next/prev word
             encoder_action_navword(clockwise);
-        } else if (mods_state & MOD_BIT(KC_LALT)) {  // if holding Left Alt, change media next/prev track
-            encoder_action_mediatrack(clockwise);
+        } else if (mods_state & MOD_BIT(KC_LALT)) {  // if holding Left Alt, change volume
+            encoder_action_volume(clockwise);
         } else  {
             switch(get_highest_layer(layer_state)) {
             case _FN1:
@@ -224,9 +224,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     if (is_tab_scrolling)
                         encoder_action_alttabscroll(clockwise);
                     else
-                        encoder_action_volume(clockwise);       // Otherwise it just changes volume
+                        encoder_action_mediatrack(clockwise);       // Otherwise it just changes track
                 #else
-                    encoder_action_volume(clockwise);       // Otherwise it just changes volume
+                    encoder_action_mediatrack(clockwise);       // Otherwise it just changes track
                 #endif // ALTTAB_SCROLL_ENABLE
                 break;
             }

@@ -170,8 +170,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         encoder_action_navword(clockwise);
     } else if (mods_state & MOD_BIT(KC_RCTL)) { // if holding Right Ctrl, change rgb hue/colour
         encoder_action_rgbhue(clockwise);
-    } else if (mods_state & MOD_BIT(KC_LALT)) { // if holding Left Alt, change media next/prev track
-        encoder_action_mediatrack(clockwise);
+    } else if (mods_state & MOD_BIT(KC_LALT)) { // if holding Left Alt, change volume
+        encoder_action_volume(clockwise);
     } else {
         switch (get_highest_layer(layer_state)) {
         case _FN1:
@@ -192,7 +192,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             break;
             #endif //GAME_ENABLE
         default:
-            encoder_action_volume(clockwise); // Otherwise it just changes volume
+            encoder_action_mediatrack(clockwise); // Otherwise it just changes media next/prev track
             break;
         }
     }
