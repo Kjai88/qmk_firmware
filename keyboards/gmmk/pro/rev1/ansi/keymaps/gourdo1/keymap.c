@@ -59,13 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* FN1 Layout
      *
      * ,-------------------------------------------------------------------------------------------------------------.
-     * | Esc  ||MyCmp |WbHom | Calc |MdSel ||MdPrv |MdNxt |MdPly |MdStp ||VolDn |VolUp |PrScr |ScrLk ||Insert||Sleep |
+     * | Esc  ||  F13  | F14 | F15 |  F16  |  F17  |  F18  |  F19  |  F20  | F21 | F22  | F23  | F24 ||Insert||Sleep |
      * |=============================================================================================================|
      * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |RGBTOD|RGBTOI| ________ ||RGBTOG|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+----------++------|
      * |  ______ |RGBSAD|RGBVAI|RGBSAI| NKRO | ____ |CALC | ____ | ____ |OUTLK |Pause | ____ | ____ |QK_BOOT|| Home |
      * |---------+------+------+------+------+------+------+------+------+------+------+------+------+-------++------|
-     * |  Capslock  |RGBHUD|RGBVAD|RGBHUI| ____|GMAIL |HTMAIL| ____ | ____ | ____ | ____ | ____ | __________ || End  |
+     * |  Capslock  |RGBHUD|RGBVAD|RGBHUI| ____|GMAIL |HTMAIL| ____ | ____ | ____ | ____ | TASK | __________ || End  |
      * |------------+------+------+------+-----+------+------+------+------+------+------+------|----+========+------|
      * |  __________  |RGBNIT| ____ | ____ | ____ | ____ |NumLk | ____ | ____ |DOTCOM| CAD  | ______ ||RGBMOD|| ____ |
      * |--------------+------+------+------+------+------+------+------+------+------+------+--+=====++------++======|
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         EE_CLR,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, KC_INS,                        KC_SLEP,
         PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR, _______, RGB_TOD, RGB_TOI, _______,          RGB_TOG,
         _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, KC_CALC, _______, _______, OUTLOOK, TG(_GAME),SWAP_L, SWAP_R,  QK_BOOT,           KC_HOME,
-        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______,          _______,           KC_END,
+        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, LCTL(LSFT(KC_ESC)), _______,         KC_END,
         _______,          RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
         _______, WINLOCK, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
@@ -96,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN1] = LAYOUT(
         EE_CLR,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, KC_INS,                        KC_SLEP,
         PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR, _______, RGB_TOD, RGB_TOI, _______,          RGB_TOG,
-        _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, KC_CALC,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,  QK_BOOT,           KC_HOME,
-        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______,          _______,           KC_END,
+        _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, KC_CALC,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,  QK_BOOT,         KC_HOME,
+        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, LCTL(LSFT(KC_ESC)), _______,         KC_END,
         _______,          RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
         _______, WINLOCK, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
