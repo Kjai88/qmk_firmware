@@ -158,7 +158,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
             } else {
                 send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"MEDIA PLAY"SS_TAP(X_KP_SLASH) "PAUSE" SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
             }
-            send_string("7. Insert function accessed with.................... ");
+            send_string("7. Insert function accessed with FN (IGNORE ->)...... ");
             if (user_config.ins_on_shft_bkspc_or_del) {
                 send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"SHIFT"SS_TAP(X_KP_MINUS)"BKSPC"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
             } else {
@@ -252,10 +252,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
     case LEFTOFENC:
         if (!(user_config.del_right_home_top)) {
             if (!(user_config.ins_on_shft_bkspc_or_del)) {
-                static bool inskey_registered;
+/* Kjai               static bool inskey_registered = false;*/
                 if (record -> event.pressed) {
                     // Detect the activation of either shift keys
-                    if (mod_state & MOD_MASK_SHIFT) {
+                    // Kjai change: INS Disabled LEFTOFENC (Del Key)
+ /* Kjai                   if (mod_state & MOD_MASK_SHIFT) {
                         // First temporarily canceling both shifts so that
                         // shift isn't applied to the KC_INS keycode
                         del_mods(MOD_MASK_SHIFT);
@@ -266,20 +267,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
                         // still work even after having tapped the key.
                         set_mods(mod_state);
                         return false;
-                    } else {
+                    } else {*/
                         register_code(KC_DEL);
                         return false;
-                    }
+//                    }
                 } else { // on release of KC_DEL
                     // In case KC_INS is still being sent even after the release of KC_DEL
-                    if (inskey_registered) {
+/* Kjai                    if (inskey_registered) {
                         unregister_code(KC_INS);
                         inskey_registered = false;
                         return false;
-                    } else {
+                    } else {*/
                         unregister_code(KC_DEL);
                         return false;
-                    }
+// Kjai                    }
                 }
             } else {
                 if (record -> event.pressed) {
@@ -376,13 +377,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
             // when keycode is released
         }
         break;
-    case YAHOO:
+/*Kjai    case YAHOO:
         if (record -> event.pressed) {
             send_string("yahoo.com");
         } else {
             // when keycode is released
         }
-        break;
+        break;*/
     case OUTLOOK:
         if (record -> event.pressed) {
             send_string("outlook.com");
