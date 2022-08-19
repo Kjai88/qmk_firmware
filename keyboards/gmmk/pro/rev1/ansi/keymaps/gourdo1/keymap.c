@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     #ifdef GAME_ENABLE
     [_FN1] = LAYOUT(
-        EE_CLR,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, KC_INS,                        KC_SLEP,
+        EE_CLR,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS,            KC_SLEP,
         PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR, _______, RGB_TOD, RGB_TOI, _______,          RGB_TOG,
         _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, KC_CALC, _______, _______, OUTLOOK, TG(_GAME),SWAP_L, SWAP_R,  QK_BOOT,           KC_HOME,
         KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, LCTL(LSFT(KC_ESC)), _______,         KC_END,
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     #else
     [_FN1] = LAYOUT(
-        EE_CLR,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, KC_INS,                        KC_SLEP,
+        EE_CLR,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS,            KC_SLEP,
         PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR, _______, RGB_TOD, RGB_TOI, _______,          RGB_TOG,
         _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, KC_CALC,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,  QK_BOOT,         KC_HOME,
         KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, LCTL(LSFT(KC_ESC)), _______,         KC_END,
@@ -149,6 +149,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     #endif // COLEMAK_LAYER_ENABLE
 };
+
+/*
+//Tentative Rotary Encoder Support
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][1] = {
+    [_BASE] =   { ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+    [_FN1] =  { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),           ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
+    [_NUMPADMOUSE] =  { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),           ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },
+    [_MOUSEKEY] = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),          ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
+	[_COLEMAK] = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),          ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
+};
+#endif
+*/
 
 #if defined(ENCODER_ENABLE) && !defined(ENCODER_DEFAULTACTIONS_ENABLE) // Encoder Functionality when not using userspace defaults
 void encoder_action_rgbhue(bool clockwise) {
@@ -280,14 +293,19 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             for (uint8_t i = 0; i < ARRAYSIZE(LED_LIST_LETTERS); i++) {
                 rgb_matrix_set_color(LED_LIST_LETTERS[i], RGB_CHARTREUSE);
             }
-            rgb_matrix_set_color(LED_L7, RGB_CHARTREUSE);
-            rgb_matrix_set_color(LED_L8, RGB_CHARTREUSE);
-            rgb_matrix_set_color(LED_LSFT, RGB_CHARTREUSE);
+			for (uint8_t i = 0; i < ARRAYSIZE(LED_SIDE_LEFT); i++) {
+				rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_WHITE);
+				rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_WHITE);
+			}
+            //rgb_matrix_set_color(LED_L7, RGB_CHARTREUSE);
+            //rgb_matrix_set_color(LED_L8, RGB_CHARTREUSE);
+            //rgb_matrix_set_color(LED_LSFT, RGB_CHARTREUSE);
         }
         else {
-            rgb_matrix_set_color(LED_L7, RGB_CHARTREUSE);
+            /*rgb_matrix_set_color(LED_L7, RGB_CHARTREUSE);
             rgb_matrix_set_color(LED_L8, RGB_CHARTREUSE);
-            rgb_matrix_set_color(LED_LSFT, RGB_CHARTREUSE);
+            rgb_matrix_set_color(LED_LSFT, RGB_CHARTREUSE);*/
+			rgb_matrix_set_color(LED_CAPS, RGB_CHARTREUSE);
         }
     }
 

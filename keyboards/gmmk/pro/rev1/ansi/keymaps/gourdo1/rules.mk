@@ -2,7 +2,8 @@ LTO_ENABLE = yes               # link time optimization -- achieves a smaller co
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 BOOTMAGIC_ENABLE = yes         # Enable Bootmagic Lite
-VIA_ENABLE = yes
+VIA_ENABLE = yes              
+#ENCODER_MAP_ENABLE = yes       # Enable Rotary Encoder Support for VIAL
 
 MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = no
